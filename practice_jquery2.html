@@ -35,11 +35,8 @@
 
     $(function(){
 
-        // update the numbers in total_visited and total_not_visited spans
-        // select all class=place elements. When they are clicked, add the class "visited"
-        // keep the the numbers in total_visited and total_not_visited spans updated as user selects more places
-        // Display an alert when all destinations have been visited
 
+        // update the numbers in total_visited and total_not_visited spans
         var totalVisited = $("li.visited").length;
         $("#total_visited").text(totalVisited);
 
@@ -48,13 +45,13 @@
         var totalNotVisited = totalPlaces - totalVisited;
         $('#total_not_visited').text(totalNotVisited);
 
-
+        // select all class=place elements. When they are clicked, add the class "visited"
         $(".place").click(function(){
             $(this).toggleClass('visited');
             $(this).slideUp('visited');
         });
 
-
+        // keep the the numbers in total_visited and total_not_visited spans updated as user selects more places
         function updateVisitedCount(){
             var totalVisited = $("li.visited").length;
             $("#total_visited").text(totalVisited);
@@ -67,6 +64,7 @@
 
         updateVisitedCount();
 
+        // Display an alert when all destinations have been visited
         if (totalNotVisited == 0) {
             alert("All destinations have been visited!");
         }
