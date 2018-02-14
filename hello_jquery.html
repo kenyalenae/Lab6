@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello JQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+<p>Click me</p>
+<p>Click me too</p>
+
+<script>
+    $(document).ready(function(){
+        $("p").click(function() {
+            $(this).css({
+                "color": "pink",
+                "background-color": "grey"
+            });
+        });
+    });
+
+    //setTimeout takes two arguments; a callback function and the delay in milliseconds
+    setTimeout( function() {
+        alert("I waited 3 seconds after the document loaded to show this");
+    }, 3000);
+
+</script>
+
+</body>
+</html>
