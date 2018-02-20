@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Lab 5, Question 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -42,6 +43,36 @@
     <li>plain</li>
     <li>JavaScript</li>
 </ul>
+
+<script>
+    $("document").ready(function(){
+        // make <span> elements bold when page loads
+        $("span").css({"font-weight": "bold"});
+    });
+
+    $(function(){
+       // when <h2> elements clicked, give them green background
+       $("h2").click(function(){
+           $(this).css({
+               "background-color": "green"
+           });
+       }) ;
+       // when "make h1 items blue" button is clicked, make h1 items blue
+       $("#h1_blue").click(function(){
+           $("h1").css({
+               "color": "blue"
+           });
+       });
+       // when "remove not important items" button is clicked, remove items with class not important
+       $("#remove_not_important").click(function(){
+          $(".not_important").remove();
+       });
+       //items in unordered list should hide when clicked but not items in the ordered list
+        $("ul li").click(function(){
+          $(this).fadeOut();
+       });
+    });
+</script>
 
 </body>
 </html>
