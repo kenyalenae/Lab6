@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 6 Advanced Part 1</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h1>To Do List</h1>
+
+<h2>Enter items to add to to do list:</h2>
+<form>
+<input type="text" id="text" name="toDoList">
+</form>
+
+<button type="button" id="add">Add</button>
+<button type="button" id="remove">Remove Done Items</button>
+
+<ul id="to_do"></ul>
+
+<h2>Items that are done</h2>
+<table>
+    <tr><td></td></tr>
+</table>
+
+<script>
+    $(function() {
+
+        $("#add").click(function() {
+            $("#to_do").append("<li></li>");
+        });
+
+
+        $("li").click(function () {
+            $(this).toggleClass('done');
+        });
+    });
+</script>
+
+</body>
+</html>
