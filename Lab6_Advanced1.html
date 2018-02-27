@@ -13,33 +13,77 @@
 
 <h1>To Do List</h1>
 
-<h2>Enter items to add to to do list:</h2>
-<form>
-<input type="text" id="text" name="toDoList">
+<form id="to_do_list_form">
+
+    <label for="task">Enter item to add to your to do list:</label>
+    <input type="text" id="task"> <br>
+
+    <button type="button" id="submit">Add</button>   <!-- Submit form button -->
+    <button type="button" id="remove">Remove Done Items</button> <!-- Remove completed items button -->
+
 </form>
 
-<button type="button" id="add">Add</button>
-<button type="button" id="remove">Remove Done Items</button>
+<h2>List of items:</h2>
 
-<ul id="to_do"></ul>
+<ul id="to_do">
 
-<h2>Items that are done</h2>
-<table>
-    <tr><td></td></tr>
-</table>
+</ul>
+
+<div id="table">
+    <h2>Completed To Do List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ITEM | </th>
+            <th>COMPLETED ON:</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
 
 <script>
-    $(function() {
 
-        $("#add").click(function() {
-            $("#to_do").append("<li></li>");
+    $(function(){
+
+        // Event handler for the submit button
+        $("#submit").click(function() {
+            // Select the form element
+            var toDoEl = $('#task');
+
+            // Read data from the form element
+            var toDo = toDoEl.val();     // The text of the toDoEl input element
+
+            console.log('Task is ', toDo);
+
+            // Append item to list
+            $("#to_do").append("<li>" + toDo + "</li>");
+
+            // Reset form field so that user can enter next item
+            toDoEl.val("");
         });
 
-
-        $("ul").click(function () {
-            $(this).toggleClass('done');
+        $("#to_do").on("click", "li", function () {
+            $(this).toggleClass("done");
         });
+
+        // remove item from list and add to table
+        $("#remove").click(function() {
+            var items = $(".done");
+            for (var i = 0; i < $(items).length; i++) {
+                    var newRow = ('<tr><td>' + items[i].innerHTML + '</td><td>' + Date() + '</td></tr>');
+                    $(newRow).hide().appendTo("#table").fadeIn(1000);
+                }
+
+                $(".done").fadeOut(1000, function () {
+                    $(".done").remove()
+                });
+            });
+
     });
+
 </script>
 
 </body>
